@@ -1,10 +1,11 @@
 const canvas = document.getElementById("grid");
 const ctx = canvas.getContext("2d");
 const genPointsButton = document.getElementById("genPoints");
+const genConvexHullButton = document.getElementById("genConvexHull");
 const pointsField = document.getElementById("pointsField");
 
-const width = 1920;
-const height = 1080;
+const width = 1280;
+const height = 720;
 
 // Only render points in the center of the screen
 const defaultNGenPoints = 10;
@@ -130,12 +131,15 @@ function genPoints() {
     drawPoints();
 }
 
-
-function main() {
-    genPointsButton.addEventListener('click', genPoints);
-    genPoints();
+function drawConvexHull() {
     let ch = genConvexHull();
     drawLines(ch);
+}
+
+function main() {
+    genPoints();
+    genPointsButton.addEventListener('click', genPoints);
+    genConvexHullButton.addEventListener('click', drawConvexHull);
 }
 
 function checkLeftTurn(slice) {
