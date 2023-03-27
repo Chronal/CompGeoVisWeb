@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en-AU">
+        <meta charset="utf-8"/>
+        <title>CompGeoVisi</title>
+        <link rel="icon" href="favicon.png"/>
+        <link rel="stylesheet" href="style.css"/>
+        <script src="js/grid.js" defer></script>
+        <script src=" js/sidebar.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <button id="menubutton">Menu</button>
+            <h1>Computational Geometry Visualiser</h1>
+        </header>
+        <main>
+            <aside id="sidebar">
+                <menu></menu>
+            </aside>
+            <canvas id="grid" width="1920" height="1080">
+                A grid to plot points and draw polygons on. Unfortunately without the interactivity, it's not particularly useful.
+            </canvas>
+            <label>Number of Points</label>
+            <input id="pointsField" type="number" value="10" min="0" step="5" max="100" inputmode="numeric"/>
+            <button id="genPoints">Generate Points</button>
+        </main>
+    </body>
+</html>

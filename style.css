@@ -1,0 +1,37 @@
+body {
+    background-color: royalblue;
+}
+
+header {
+    display: flex;
+}
+
+#menubutton {
+}
+
+h1 {
+    flex: 90%;
+    flex-direction: column;
+    color: lightpink;
+    text-align: center;
+}
+
+.sidebar-open {
+    display: flex;
+}
+
+.sidebar-closed {
+    visibility: collapse;
+}
+
+main {
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#grid {
+    border: 5px solid black;
+    margin: 3%;
+}
