@@ -21,10 +21,11 @@
                 A grid to plot points and draw polygons on. Unfortunately without the interactivity, it's not particularly useful.
             </canvas>
             <menu>
-                <label>Number of Points</label>
+                <label for="pointsField">Number of Points</label>
                 <input id="pointsField" type="number" value="10" min="0" step="5" max="100" inputmode="numeric"/>
                 <button id="genPoints">Generate Points</button>
                 <button id="genConvexHull">Compute Convex Hull</button>
+                <button id="genSimplePoly">Compute Simple Polygon</button>
             </menu>
         </main>
     </body>

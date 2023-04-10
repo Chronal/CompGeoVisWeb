@@ -14,4 +14,4 @@ function toggleSidebar() {
     }
 }
 
-button.addEventListener("click", toggleSidebar);
+//button.addEventListener("click", toggleSidebar);
