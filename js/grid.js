@@ -3,6 +3,7 @@ const ctx = canvas.getContext("2d");
 const genPointsButton = document.getElementById("genPoints");
 const genConvexHullButton = document.getElementById("genConvexHull");
 const genSimplePolyButton = document.getElementById("genSimplePoly");
+const genConvexFromSimpleButton = document.getElementById("genConvexFromSimple");
 const pointsField = document.getElementById("pointsField");
 
 const width = 1280;
@@ -102,7 +103,6 @@ function genSimplePoly() {
 
     return upper;
 }
-
 function genConvexHull() {
     let stackUpper = new Array();
     let stackLower = new Array();
@@ -147,7 +147,24 @@ function genConvexHull() {
     stackUpper.push(...stackLower);
     return stackUpper;
 }
+function genConvexFromSimple(vertices) {
+    let stack = new Array();
 
+    stack.push(vertices[0]);
+    stack.push(vertices[1]);
+
+    for (let i = 2; i < vertices.length; ++i) {
+        let vertex = vertices[i];
+        stack.push(vertex);
+
+        while (stack.length > 2 && checkLeftTurn(stack.slice(-3))) {
+            let last = stack.pop();
+            stack.pop();
+            stack.push(last);
+        }
+    }
+    return stack;
+}
 
 // Grid drawing functions
 function drawGridLines() {
@@ -236,15 +253,23 @@ function drawConvexHull() {
 }
 function drawSimplePoly() {
     drawPoints();
-    let ch = genSimplePoly();
+    let simplePoly = genSimplePoly();
+    drawLines(simplePoly);
+}
+function drawConvexHullFromSimple() {
+    drawPoints();
+    let simplePoly = genSimplePoly();
+    let ch = genConvexFromSimple(simplePoly);
     drawLines(ch);
 }
+
 
 function main() {
     genPoints();
     genPointsButton.addEventListener('click', genPoints);
     genConvexHullButton.addEventListener('click', drawConvexHull);
     genSimplePolyButton.addEventListener('click', drawSimplePoly);
+    genConvexFromSimpleButton.addEventListener('click', drawConvexHullFromSimple);
 }
 
 main();
